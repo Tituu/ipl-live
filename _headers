@@ -1,0 +1,6 @@
+/config.json
+  Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
+  Referer-Policy: no-referrer
+  Permissions-Policy: interest-cohort=()
