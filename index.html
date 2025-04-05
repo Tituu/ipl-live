@@ -6,18 +6,16 @@
   <title>Titu IPL</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="img/png" href="logo.png"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
 
-  <!-- Google Font -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
 
-  <!-- Clappr and Plugins -->
+  <!-- Clappr & Plugins -->
   <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.0.1/dist/hlsjs-playback.min.js"></script>
@@ -32,136 +30,161 @@
           disable-paste="true"></script>
 
   <style>
-    body {
-      margin: 0;
+    * {
       font-family: 'Poppins', sans-serif;
-      background: url('https://unitedcamps.in/Images/IMG_1743855104.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #ff00FF;
-      overflow-x: hidden;
     }
 
-    .glass-box {
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 1s ease-in-out;
+    body {
+      background-color: #f4f6f9;
+      color: #212529;
+    }
+
+    .container {
+      margin-top: 40px;
     }
 
     h1 {
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+      font-weight: 600;
+      color: #0d6efd;
     }
 
     #player {
       width: 100%;
-      height: 65vh;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      overflow: hidden;
-      animation: fadeIn 1.5s ease-in-out;
+      height: 70vh;
+      background-color: #101010;
+      border-radius: 10px;
+      border: 2px solid #198754;
+      box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    #player:hover {
+      box-shadow: 0 0 20px rgba(25, 135, 84, 0.8);
     }
 
     .btn-primary {
-      background: #00e676;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 8px;
+      background-color: #0d6efd;
       border: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 12px 30px;
-      border-radius: 50px;
-      transition: all 0.3s ease-in-out;
-      margin-top: 15px;
     }
 
-    .btn-primary:hover {
-      background: #00c853;
-      transform: scale(1.05);
+    .info-modal .modal-header {
+      background: #000;
+      color: white;
+      border-bottom: none;
+    }
+
+    .info-modal .modal-content {
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      animation: popUp 0.5s ease;
+    }
+
+    .info-modal img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .gradient-text {
+      font-weight: 600;
+      background: linear-gradient(45deg, #0d6efd, #6610f2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 18px;
     }
 
     footer {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      padding: 30px 0;
+      background-color: #ffffff;
+      border-top: 1px solid #dee2e6;
+      padding: 40px 0;
       text-align: center;
       margin-top: 50px;
-      color: #ddd;
+    }
+
+    footer h5 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      margin-bottom: 5px;
+      font-size: 0.95rem;
     }
 
     footer i {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin: 0 10px;
-      color: #00e676;
+      color: #0d6efd;
     }
 
     footer .credits {
       margin-top: 10px;
       font-size: 0.85rem;
-      color: #ccc;
+      color: #6c757d;
     }
 
-    @keyframes fadeIn {
-      from {
+    @keyframes popUp {
+      0% {
+        transform: scale(0.9);
         opacity: 0;
-        transform: scale(0.95);
       }
-      to {
-        opacity: 1;
+      100% {
         transform: scale(1);
+        opacity: 1;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Modal -->
-  <div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionLabel" aria-hidden="true">
+  <!-- Info Modal -->
+  <div class="modal fade info-modal" id="instructionModal" tabindex="-1" aria-labelledby="instructionLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 shadow">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title" id="instructionLabel"><i class="bi bi-info-circle me-2"></i>Important Instructions</h5>
+      <div class="modal-content text-center">
+        <div class="modal-header justify-content-center border-0">
+          <img src="img/logo.png" alt="logo">
         </div>
-        <div class="modal-body text-center">
-          <p>Please <strong>Join Our Update Group</strong> for latest info, match links, and working streams.</p>
-          <a href="https://telegram.me/+AKSAvUy4IzhjODY9" target="_blank" class="btn btn-success mt-2">
+        <div class="modal-body">
+          <p class="gradient-text">Join our <strong>Update Group</strong> for latest info, match links & streams.</p>
+          <a href="https://chat.whatsapp.com/DTd24MLztOa2I47Cymo1F6" target="_blank" class="btn btn-success mt-2">
             <i class="bi bi-whatsapp"></i> Join Update Group
           </a>
         </div>
-        <div class="modal-footer justify-content-center">
+        <div class="modal-footer justify-content-center border-0">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Got it!</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container py-5">
-    <div class="glass-box text-center">
-      <h1>IPL 2025 Live | Hindi</h1>
-      <div id="player" class="my-4"></div>
-      <a href="https://telegram.me/+AKSAvUy4IzhjODY9" target="_blank" class="btn btn-primary">
-        <i class="bi bi-whatsapp"></i> Get Live Updates
-      </a>
-    </div>
+  <div class="container text-center">
+    <h1 class="mb-4">IPL Live Stream: Hindi</h1>
+
+    <!-- Video Player -->
+    <div id="player"></div>
+
+    <!-- Telegram Button -->
+    <a href="https://chat.whatsapp.com/DTd24MLztOa2I47Cymo1F6" target="_blank" class="btn btn-primary mt-4">
+      <i class="bi bi-whatsapp"></i> Join for More Updates
+    </a>
   </div>
 
   <!-- Footer -->
   <footer>
-    <h5>Titu IPL</h5>
+    <h5>TITU IPL</h5>
     <p>Streaming Cricket | IPL 2025</p>
     <div>
-      <a href="https://telegram.me/+AKSAvUy4IzhjODY9" target="_blank"><i class="bi bi-whatsapp"></i></a>
-      <a href="#" target="_blank"><i class="bi bi-robot"></i></a>
+      <a href="https://chat.whatsapp.com/DTd24MLztOa2I47Cymo1F6" target="_blank"><i class="bi bi-telegram"></i></a>
+      <a href="https://wa.me/+919960142091" target="_blank"><i class="bi bi-robot"></i></a>
     </div>
-    <div class="credits">&copy; 2025 KRBotX. All rights reserved.</div>
+    <div class="credits">&copy; 2025 TITU IPL. All rights reserved.</div>
   </footer>
 
-  <!-- Clappr Player Script -->
+  <!-- Player Script -->
   <script>
     var player = new Clappr.Player({
       source: 'https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M1_IPL25_HIN_IDC_MOB/Fallback/index.m3u8',
@@ -170,7 +193,7 @@
       autoPlay: true,
       plugins: [HlsjsPlayback, LevelSelector],
       mimeType: "application/x-mpegURL",
-      mediacontrol: { seekbar: "#00e676", buttons: "#fff" },
+      mediacontrol: { seekbar: "#0d6efd", buttons: "#333" },
       parentId: "#player"
     });
 
